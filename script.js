@@ -1,55 +1,56 @@
 class Calculator {
-  constructor(prevOperationText,currOperationText){ //turns the previous operation and current operation into an object.
+  constructor
+  (prevOperationText,currOperationText){ //turns the previous operation and current operation into an object.
     this.prevOperationText = prevOperationText
     this.currOperationText = currOperationText
     this.clear()
   }
-  
-  appendNumber(number) { //function that adds numbers to equation
+  //Functions
+  inputNumber(number) { //function that adds numbers to equation
+    if(number === `.` && this.currOperation.includes(`.`)) return //If there is a dot, then DO NOT!
     this.currOperation = this.currOperation.toString() + number.toString() //stringifys the equation
   }
-  chooseOperation(operation){
+  whichOperation(operation){
     if (this.currOperation === '') return //if there is no entry, do not show
     this.operation = operation
     this.prevOperation = this.currOperation
     this.currOperation = ''
   }
-  
-  clear() {
-    this.currOperation = ''
+  clear() { //clear function
+    this.currOperation = '' 
     this.prevOperation = ''
     this.operation = undefined
   }
   compute(){
     let computation // computation is defined as whatever the operation between the prev and curr Operation are.
-    const prev = parseFloat(this.prevOperation)
-    const curr = parseFloat(this.currOperation)
-    if (isNaN(prev) || isNaN(curr)) return
+    const prev = parseFloat(this.prevOperation) //prev is the current previous number
+    const curr = parseFloat(this.currOperation) //curr is the current operative number
+    //if (isNaN(prev) || isNaN(curr)) return //if either is not a number, return
     switch (this.operation) {
       case '+':
-          computation = prev + curr
+          computation = prev + curr //add
           break
       case '-':
-          computation = prev - curr
+          computation = prev - curr //subtract
           break
       case '*':
-          computation = prev * curr
+          computation = prev * curr //multiply
           break
       case '/':
-          computation = prev / curr
+          computation = prev / curr //divide
           break
-          case '^2':
-          computation = prev * prev //have to input 0 for it to work
+          case 'x²':
+          computation = prev * prev //square
             break
       default:
         return
           
     }
-    this.currOperation = computation
+    this.currOperation = computation // the current operation is the computation
     this.operation = undefined
-    this.prevOperation = ''
+    this.prevOperation = '' //empties the prev operation after done
   }
-  updateDisplay(){
+  updateDisplay(){ //updates display
     this.currOperationText.innerText = this.currOperation
     this.prevOperationText.innerText = this.prevOperation
   }
@@ -57,7 +58,8 @@ class Calculator {
 
 
 
-const numberButtons = document.querySelectorAll('[data-number]') //selects ALL elements with the tag data-number and stores it as a variable
+//selector variables
+const numberButtons = document.querySelectorAll('[data-number]') 
 const operationButtons = document.querySelectorAll('[data-operation]')
 const equalsButton = document.querySelector('[data-equals]')
 const clearButton = document.querySelector('[data-clear]')
@@ -66,16 +68,18 @@ const currOperationText = document.querySelector('[data-curr-Operation]')
 
 const calculator = new Calculator(prevOperationText, currOperationText)
 
+//Number Buttons Add their number to the equation
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
-    calculator.appendNumber(button.innerText) 
+    calculator.inputNumber(button.innerText) 
     calculator.updateDisplay()
   })
 })
-
+//The Operation Buttons Tell The Calculator what their symbol is.
 operationButtons.forEach(button => {
   button.addEventListener('click', () => { //upon clicking it 
-    calculator.chooseOperation(button.innerText) //the operation is = the number on the button
+    calculator.whichOperation(button.innerText)
+     //the click sends the symbol to the calculator.
     calculator.updateDisplay() // update the calculator
   })
 })

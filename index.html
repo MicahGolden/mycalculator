@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Micah's Cool Calculator</title>  <!---->
+  <title>Micah's Cool Calculator</title> 
   <link href="styles.css" rel="stylesheet"> <!--#//attaches css-->
   <script src="script.js" defer></script> <!--#//attaches js-->
 </head>
 <body>
+  <div class="heading">
+    <h1>Micah's Cool Calculator</h1>
+  </div>
+  <div class = "para">
+    <p>A Riveting Experience?</p>
+    <p class ="tagline">Sure, let's go with that.</p>
+  </div>
   <div class="calculator-grid">
+
     <div class="display">
       <div data-prev-Operation class="prev-Operation"></div>
       <div data-curr-Operation class="curr-Operation"></div>
       </div>
-      <button data-clear class="big">Clear</button>
-      <button data-operation >/</button>
-      <button data-operation >x</button>
-      <button data-operation >+</button>
-      <button data-operation >-</button>
-      <button data-operation >^2</button>
-      <button  data-number >1</button>
-      <button  data-number >2</button>
-      <button  data-number >3</button>
-      <button  data-number >4</button>
-      <button  data-number >5</button>
-      <button  data-number >6</button>
-      <button  data-number >7</button>
-      <button  data-number >8</button>
-      <button  data-number >9</button>
-      <button  data-number >0</button>
-      <button  data-number >3.1415</button>
-      <button  data-number >.</button>
+      <button class="function" data-clear class="big">Clear</button>
+      <button class="function" data-operation >x²</button>
+      <button class="number" data-number >1</button>
+      <button class="number" data-number >2</button>
+      <button class="number" data-number >3</button>
+      <button class="function" data-operation >+</button>
+      <button class="function" data-operation >-</button>
+      <button class="number" data-number >4</button>
+      <button class="number" data-number >5</button>
+      <button class="number" data-number >6</button>
+      <button class="function" data-operation >*</button>
+      <button class="function" data-operation >/</button>
+      <button class="number" data-number >7</button>
+      <button class="number" data-number >8</button>
+      <button class="number" data-number >9</button>
+      <button class="number" data-number >3.1415</button>
+      <button class="number" data-number >.</button>
+      <button class="number" data-number >0</button>
       <button data-equals class="bigger">=</button>
     </div>
 
